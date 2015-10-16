@@ -2,6 +2,11 @@
 #include "Block.h"
 
 
+void Block::block_positions(Position* p)
+{
+	positions_inblock_set.insert(p);
+}
+
 void Block::read_available_in()
 {
 	for (auto iter : available_in_is)
@@ -18,7 +23,6 @@ void Block::remove(int a)
 Block::Block(int key): block(key)
 {
 }
-
 
 
 Block::~Block()

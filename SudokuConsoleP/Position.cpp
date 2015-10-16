@@ -9,31 +9,83 @@ Position::Position(std::vector<int>& build_vector)
 	//Temporary vec definition.
 	for (std::vector<int>::iterator i = vtest_vector.begin(); i != vtest_vector.end(); ++i)
 	{
-		printf("%d ", *i);										//printing vec sequentially
+		printf("%d ", *i); //printing vec sequentially
 	}
 	printf("\n");
-	build_vector = vtest_vector;								//currently indirectly setting vector will optimize later.
+	build_vector = vtest_vector; //currently indirectly setting vector will optimize later.
 }
 
 Position::Position(int nPos, std::vector<int>::const_iterator p): cnPos(nPos), vector_const_iterator_p(p)
 {
-	printf("constructor for position %d called: %d\n", nPos, nPos);							
-}												//constructor for a new position object
+	printf("constructor for position %d called: %d\n", nPos, nPos);
+} //constructor for a new position object
+
+void Position::read_availableinr()
+{
+	for (auto iter : row_->available_in_is)
+		printf("%d, ", iter);
+
+}
+
+void Position::read_availableinc()
+{
+	for (auto iter : column_->available_in_is)
+		printf("%d, ", iter);
+
+}
+
+void Position::read_availableinb()
+{
+	for (auto iter : block_->available_in_is)
+		printf("%d, ", iter);
+
+}
+
+void Position::row(Row* rp)
+{
+	row_ = rp;
+	
+}
+
+void  Position::column(Column* cp)
+{
+	column_ = cp;
+
+}
+
+void  Position::block(Block* bp)
+{
+	block_ = bp;
+
+}
 
 int Position::cn_pos() const
 {
 	return cnPos;
-}				// Outputs position of object
+}
 
-void Position::solve_Position()
+void Position::solve_Positionrcb()
 {
 	r = cnPos / 9;
 	c = cnPos % 9;
 	b = ((r / 3) * 3 + c / 3);
-}				// defines r c and b;
+}
+const int& Position::r1()
+{
+	return r;
+}
+
+const int& Position::c1()
+{
+	return c;
+}
+
+const int& Position::b1()
+{
+	return b;
+}
 
 Position::~Position()
 {
-	printf("Deconstructor called:\n");
+	printf("Destructor called:\n");
 }
-
