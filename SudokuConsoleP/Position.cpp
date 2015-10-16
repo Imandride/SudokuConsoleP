@@ -17,7 +17,7 @@ Position::Position(std::vector<int>& build_vector)
 
 Position::Position(int nPos, std::vector<int>::const_iterator p): cnPos(nPos), vector_const_iterator_p(p)
 {
-	printf("constructor that builds objects called: %d\n", nPos);							
+	printf("constructor for position %d called: %d\n", nPos, nPos);							
 }												//constructor for a new position object
 
 int Position::cn_pos() const

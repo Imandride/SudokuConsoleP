@@ -11,6 +11,12 @@
 #include <tchar.h>
 #include <vector>
 #include <memory>
+#include <iostream>
+#include <set>
+#include "Row.h"
+#include <map>
+#include "Column.h"
+#include "Block.h"
 using namespace std;
 
 

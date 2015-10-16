@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <set>
 
 
 class Position
@@ -9,6 +10,7 @@ class Position
 	int b =0;				// block
 	const int cnPos = 0;	//position
 	std::vector<int>::const_iterator vector_const_iterator_p; // address of iteration of vector in which position resides
+	std::set<int> available_pos_is{ 1,2,3,4,5,6,7,8,9 };
 	Position() = delete;
 public:
 
