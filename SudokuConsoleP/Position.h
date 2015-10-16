@@ -4,12 +4,12 @@
 
 class Position
 {
-	int r =0;
-	int c =0;
-	int b =0;
-	const int cnPos = 0;
-	std::vector<int>::const_iterator vector_const_iterator_p;
-	Position();
+	int r =0;				// row	
+	int c =0;				// column
+	int b =0;				// block
+	const int cnPos = 0;	//position
+	std::vector<int>::const_iterator vector_const_iterator_p; // address of iteration of vector in which position resides
+	Position() = delete;
 public:
 
 	int cn_pos() const;
