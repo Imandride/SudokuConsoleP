@@ -95,6 +95,11 @@ void buildVec(vector<int>& Sud)
 	}
 }
 
+void read_VecI(vector<int> vec)
+{
+	for (auto iter: vec)
+		printf("%d, ", iter);
+}
 int main()
 {
 	setrcb_objects();
@@ -106,13 +111,13 @@ int main()
 	for (auto s : set_positions)						// iterating through objects sequentially from least address location onwards.
 	{													//
 		ppos = s;										// setting the pointer to the address of first available object
-		printf("%d\n", ppos->cn_pos());					// outputting object position;
+		//printf("%d\n", ppos->cn_pos());					// outputting object position;
 		ppos->solve_Position();							// solving for row column and block;
-		printf("%d ", ppos->r1());						// outputting row
-		printf("%d ", ppos->c1());						// outputting column
-		printf("%d\n\n", ppos->b1());					// outputting block
+		//printf("%d ", ppos->r1());						// outputting row
+		//printf("%d ", ppos->c1());						// outputting column
+		//printf("%d\n\n", ppos->b1());						// outputting block
 	}
-	
+	read_VecI(Sud);
 
 	cin.get();
 	return 0;
