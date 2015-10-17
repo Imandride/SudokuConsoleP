@@ -2,22 +2,43 @@
 #include "Block.h"
 
 
-void Block::block_positions(Position* p)
+
+const int& Block::getblock()
 {
-	positions_inblock_set.insert(p);
+	return block;
 }
 
-void Block::read_available_in()
+void Block::readblock()
 {
-	for (auto iter : available_in_is)
-		printf("%d, ", iter);
+	printf("%d\n", block);
+}
 
-	printf("\n");
+void Block::block_positions(Position* p)
+{
+	positions_in_PS.insert(p);
+}
+
+void Block::read_availablein()
+{
+	for (auto p : available_in_IS)
+	{
+		printf("%d ", p);
+	}
+}
+
+std::set<int>* Block::available_in_BIS()
+{
+		return &available_in_IS;
 }
 
 void Block::remove(int a)
 {
-	available_in_is.erase(a);
+	available_in_IS.erase(a);
+	for (auto p : positions_in_PS)
+	{
+		printf("Removing from position: %d\n", p->cn_pos());
+
+	}
 }
 
 Block::Block(int key): block(key)

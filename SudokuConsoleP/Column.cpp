@@ -1,6 +1,18 @@
 #include "stdafx.h"
 #include "Column.h"
 
+std::set<int>* Column::available_in_CIS()
+{
+	return &available_in_IS;
+}
+
+void Column::read_availablein()
+{
+	for (auto p: available_in_IS)
+	{
+		printf("%d ", p);
+	}
+}
 
 void Column::column_positions(Position* p)
 {
@@ -12,17 +24,18 @@ const int& Column::getcol()
 	return column;
 }
 
-void Column::read_available_in()
+void Column::readcolumn()
 {
-	for (auto iter : available_in_is)
-		printf("%d, ", iter);
-
-	printf("\n");
+	printf("%d ",column);
 }
 
 void Column::remove(int a)
 {
-	available_in_is.erase(a);
+	available_in_IS.erase(a);
+	for(auto p :  positions_incol_set)
+	{
+		p->delete_available_pos(a);
+	}
 }
 
 Column::Column(int key): column(key)

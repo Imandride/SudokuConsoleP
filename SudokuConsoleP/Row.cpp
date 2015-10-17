@@ -2,9 +2,14 @@
 #include "Row.h"
 
 
+std::set<int>* Row::available_in_RIS()
+{
+	return &available_in_IS;
+}
+
 void Row::row_positions(Position* p)
 {
-	positions_inrow_set.insert(p);
+	positions_in_PS.insert(p);
 }
 
 const int& Row::getrow()
@@ -12,17 +17,27 @@ const int& Row::getrow()
 	return row;
 }
 
-void Row::read_available_in()
+void Row::readrow()
 {
-	for (auto iter: available_in_is)
-		printf("%d, ", iter);
+	printf("%d ", row);
 
-	printf("\n");
+}
+
+void Row::read_availablein()
+{
+	for (auto p : available_in_IS)
+	{
+		printf("%d ", p);
+	}
 }
 
 void Row::remove(int a)
 {
-	available_in_is.erase(a);
+	available_in_IS.erase(a);
+	for (auto p : positions_in_PS)
+	{
+		p->delete_available_pos(a);
+	}
 }
 
 Row::Row(int key): row(key)
