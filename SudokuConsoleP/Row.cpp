@@ -19,7 +19,7 @@ const int& Row::getrow()
 
 void Row::readrow()
 {
-	printf("%d ", row);
+	printf("Row: %d    ", row);
 
 }
 
@@ -36,7 +36,10 @@ void Row::remove(int a)
 	available_in_IS.erase(a);
 	for (auto p : positions_in_PS)
 	{
+		printf("Removing from position: %d\n", p->cn_pos());
 		p->delete_available_pos(a);
+		this->read_availablein();
+		printf("\n");
 	}
 }
 

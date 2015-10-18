@@ -26,7 +26,7 @@ const int& Column::getcol()
 
 void Column::readcolumn()
 {
-	printf("%d ",column);
+	printf("Column: %d    ",column);
 }
 
 void Column::remove(int a)
@@ -34,7 +34,10 @@ void Column::remove(int a)
 	available_in_IS.erase(a);
 	for(auto p :  positions_incol_set)
 	{
+		printf("Removing from position: %d\n", p->cn_pos());
 		p->delete_available_pos(a);
+		this->read_availablein();
+		printf("\n");
 	}
 }
 

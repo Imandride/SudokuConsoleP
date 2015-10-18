@@ -22,10 +22,13 @@ Position::Position(int nPos, std::vector<int>::const_iterator p): cnPos(nPos), v
 
 void Position::read_availablein()
 {
+	printf("Positions in Row:\n");
 	row_->read_availablein();
 	printf("\n");
+	printf("Positions in Column:\n");
 	column_->read_availablein();
 	printf("\n");
+	printf("Positions in Block:\n");
 	block_->read_availablein();
 	printf("\n");
 	printf("\n");

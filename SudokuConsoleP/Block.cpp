@@ -10,7 +10,7 @@ const int& Block::getblock()
 
 void Block::readblock()
 {
-	printf("%d\n", block);
+	printf("Block: %d\n    ", block);
 }
 
 void Block::block_positions(Position* p)
@@ -37,6 +37,9 @@ void Block::remove(int a)
 	for (auto p : positions_in_PS)
 	{
 		printf("Removing from position: %d\n", p->cn_pos());
+		p->delete_available_pos(a);
+		this->read_availablein();
+		printf("\n");
 
 	}
 }

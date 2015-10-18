@@ -12,27 +12,18 @@ map<int, Block*> block_op_map;
 Row* active_row;
 Column* active_column;
 Block* active_block;
+Position* deletePP;
 
 void remove_available_pos(Position* p)
 {
-	printf("\nVector value read");
+	printf("\nVector value read ");
 	int rn = p->get_vector_value();
-	printf("%d", rn);
+	printf("%d\n", rn);
 	active_row->remove(rn);
 	active_column->remove(rn);
 	active_block->remove(rn);
-	p->read_availablein();
 
-	printf("\nRow being read");
-	active_row->readrow();
-
-	printf("\nColumn being read");
-	active_column->readcolumn();
-
-	printf("\nBlock being read");
-	active_block->readblock();
-	
-	
+	p->read_availablein();	
 
 }
 
@@ -69,6 +60,8 @@ void buildVec(vector<int>& Sud)
 		for (vector<int>::iterator i = Sud.begin(); i != Sud.end(); ++p, ++i)
 		{
 			set_positions.insert(new Position(p, i));
+			set_positions.insert(new Position(p, i));
+
 			
 		}
 		
@@ -94,31 +87,51 @@ void set_rcb_pos()
 		// iter->read_availablein();
 	}
 }
+void delete_position()
+{
+
+	printf("Position: %d    ", deletePP->cn_pos());
+
+
+	printf("Value: %d    ", deletePP->get_vector_value());
+
+	active_row = deletePP->row();
+	active_row->readrow();
+
+	active_column = deletePP->column();
+	active_column->readcolumn();
+
+	active_block = deletePP->block();
+	active_block->readblock();
+
+	remove_available_pos(deletePP);
+
+}
+
+
+void delete_check_zero(Position* p)
+{
+	if (p->get_vector_value() == 0)
+	{
+		printf("Position %d Is Zero Checking next position: \n\n", p->cn_pos());
+		return;
+	}
+	else
+	{
+		deletePP = p;
+		delete_position();
+	}
+	return;
+}
+
+
+
 void check_positions()
 {
 	for (auto p : set_positions)
 	{
-		printf("%d ", p->cn_pos());
+		delete_check_zero(p);
 
-		if (p->get_vector_value() != 0)
-		{
-			printf("%d ", p->get_vector_value());
-
-			active_row = p->row();
-			active_row->readrow();
-
-			active_column= p->column();
-			active_column->readcolumn();
-
-			active_block= p->block();
-			active_block->readblock();
-
-			remove_available_pos(p);
-
-			__debugbreak();
-		}
-
-		printf("\n");
 		
 	}
 
