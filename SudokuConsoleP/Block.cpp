@@ -2,7 +2,6 @@
 #include "Block.h"
 
 
-
 const int& Block::getblock()
 {
 	return block;
@@ -13,7 +12,7 @@ void Block::readblock()
 	printf("Block: %d\n    ", block);
 }
 
-void Block::block_positions(Position* p)
+void Block::block_positions(P_PR &p)
 {
 	positions_in_PS.insert(p);
 }
@@ -26,9 +25,15 @@ void Block::read_availablein()
 	}
 }
 
+void Block::delete_pointer_position(P_PR p)
+{
+	printf("Deleting position %d from block: ", p->return_active_int());
+	positions_in_PS.erase(p);
+}
+
 std::set<int>* Block::available_in_BIS()
 {
-		return &available_in_IS;
+	return &available_in_IS;
 }
 
 void Block::remove(int a)
@@ -36,11 +41,10 @@ void Block::remove(int a)
 	available_in_IS.erase(a);
 	for (auto p : positions_in_PS)
 	{
-		printf("Removing from position: %d\n", p->cn_pos());
+		printf("Removing from position: %d\n", p->return_active_int());
 		p->delete_available_pos(a);
 		this->read_availablein();
 		printf("\n");
-
 	}
 }
 
