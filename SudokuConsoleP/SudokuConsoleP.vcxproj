@@ -146,6 +146,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Block.h" />
+    <ClInclude Include="Build.h" />
     <ClInclude Include="Column.h" />
     <ClInclude Include="Position.h" />
     <ClInclude Include="Row.h" />
@@ -154,6 +155,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Block.cpp" />
+    <ClCompile Include="Build.cpp" />
     <ClCompile Include="Column.cpp" />
     <ClCompile Include="Position.cpp" />
     <ClCompile Include="Row.cpp" />

@@ -1,24 +1,48 @@
 #pragma once
-#include "stdafx.h"
 #include "Position.h"
-
 
 
 Position::Position(std::vector<int>& build_vector)
 {
 	std::vector<int> vtest_vector{0,0,0,8,9,0,0,7,0,0,4,0,1,7,0,9,0,3,9,6,0,0,4,2,1,0,0,0,9,0,4,0,0,5,0,0,5,0,0,0,6,0,2,0,7,0,1,4,5,2,0,0,8,9,0,0,0,0,0,3,7,1,2,0,0,6,2,8,9,0,3,0,2,5,3,0,0,0,0,0,6};
-	for (std::vector<int>::iterator i = vtest_vector.begin(); i != vtest_vector.end(); ++i)
+	for (auto i: vtest_vector)
 	{
-		printf("%d ", *i); //printing vec sequentially
+		printf("%d ", i);
 	}
+
 	printf("\n");
-	build_vector = vtest_vector; //currently indirectly setting vector will optimize later.
+	build_vector = vtest_vector;
 }
 
-Position::Position(int nPos, std::vector<int>::const_iterator p): cnPos(nPos), vector_const_iterator_p(p)
+Position::Position(int nPos, std::vector<int>::const_iterator p): cnPos(nPos), iter_pos_vect(p)
 {
-	printf("constructor for position %d called: %d\n", nPos, nPos);
-} //constructor for a new position object
+	printf("Constructor for position %d called:\n", nPos);
+}
+
+R_P& Position::return_active_ptr(R_P)
+{
+	return row_;
+}
+
+B_P& Position::return_active_ptr(B_P)
+{
+	return block_;
+}
+
+int& Position::return_active_ptr(int)
+{
+	return cnPos;
+}
+
+int Position::return_active_int()
+{
+	return cnPos;
+}
+
+C_P& Position::return_active_ptr(C_P)
+{
+	return column_;
+}
 
 void Position::read_availablein()
 {
@@ -34,77 +58,28 @@ void Position::read_availablein()
 	printf("\n");
 }
 
-Row*& Position::row()
+void Position::solve_set_address_RCB(std::map<int, R_P>& ropr, std::map<int, C_P>& copr, std::map<int, B_P>& bopr)
 {
-	return row_;
+	int row = cnPos / 9;
+	int columb = cnPos % 9;
+	int block = ((row / 3) * 3 + columb / 3);
+
+	row_ = ropr.at(row);
+	column_ = copr.at(columb);
+	block_ = bopr.at(block);
 }
 
-Column*& Position::column()
-{
-	return column_;
-}
-
-Block*& Position::block()
-{
-	return block_;
-}
-
-void Position::row(Row* rp)
-{
-	row_ = rp;
-	
-}
-
-
-
-void  Position::column(Column* cp)
-{
-	column_ = cp;
-
-}
-
-void  Position::block(Block* bp)
-{
-	block_ = bp;
-
-}
-
-const int& Position::cn_pos()
-{
-	return cnPos;
-}
 
 const int& Position::get_vector_value()
 {
-	return *vector_const_iterator_p;
+	return *iter_pos_vect;
 }
 
-void Position::solve_Positionrcb()
-{
-	r = cnPos / 9;
-	c = cnPos % 9;
-	b = ((r / 3) * 3 + c / 3);
-}
-
-void Position::delete_available_pos(int  i)
+void Position::delete_available_pos(int i)
 {
 	available_pos_is.erase(i);
 }
 
-const int& Position::Rr()
-{
-	return r;
-}
-
-const int& Position::Rc()
-{
-	return c;
-}
-
-const int& Position::Rb()
-{
-	return b;
-}
 
 Position::~Position()
 {

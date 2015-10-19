@@ -14,9 +14,9 @@ void Column::read_availablein()
 	}
 }
 
-void Column::column_positions(Position* p)
+void Column::column_positions(P_P p)
 {
-	positions_incol_set.insert(p);
+	positions_in_PS.insert(p);
 }
 
 const int& Column::getcol()
@@ -26,15 +26,21 @@ const int& Column::getcol()
 
 void Column::readcolumn()
 {
-	printf("Column: %d    ",column);
+	printf("Column: %d    ", column);
+}
+
+void Column::delete_pointer_position(P_P p)
+{
+	printf("Deleting position %d from column: ", p->return_active_int());
+	positions_in_PS.erase(p);
 }
 
 void Column::remove(int a)
 {
 	available_in_IS.erase(a);
-	for(auto p :  positions_incol_set)
+	for (auto p : positions_in_PS)
 	{
-		printf("Removing from position: %d\n", p->cn_pos());
+		printf("Removing from position: %d\n", p->return_active_int());
 		p->delete_available_pos(a);
 		this->read_availablein();
 		printf("\n");

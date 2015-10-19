@@ -6,7 +6,6 @@
 #pragma once
 
 #include "targetver.h"
-#include "Position.h"
 #include <stdio.h>
 #include <tchar.h>
 #include <vector>
@@ -14,8 +13,8 @@
 #include <iostream>
 #include <set>
 #include <map>
+
+
 using namespace std;
-
-
 // TODO: reference additional headers your program requires here
 
