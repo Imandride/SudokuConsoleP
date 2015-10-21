@@ -7,7 +7,7 @@ std::set<int>* Row::available_in_RIS()
 	return &available_in_IS;
 }
 
-void Row::row_positions(P_P p)
+void Row::row_positions(std::shared_ptr<Position> p)
 {
 	positions_in_PS.insert(p);
 }
@@ -44,9 +44,9 @@ void Row::remove_availablein(int a)
 }
 
 
-void Row::delete_pointer_position()
+void Row::delete_pointer_position(std::shared_ptr<Position> p)
 {
-	printf("Deleting position %d from row: ", active_int_pos_ptr);
+	printf("Deleting position %d from row: \n", p->return_active_int());
 
 	positions_in_PS.erase(p);
 }

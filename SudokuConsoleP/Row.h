@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Build.h"
-using namespace std;
+class Position;
 
+using namespace std;
 class Build;
 
 class Row
@@ -14,12 +14,12 @@ protected:
 	std::set<std::shared_ptr<Position>> positions_in_PS;
 	std::set<int>* available_in_RIS();
 public:
-	void row_positions();
+	void row_positions(std::shared_ptr<Position> p);
 	const int& getrow();
 	void readrow();
 	void read_availablein();
 	void remove_availablein(int a);
-	void delete_pointer_position();
+	void delete_pointer_position(std::shared_ptr<Position> p);
 	explicit Row(int key);
 	~Row();
 };

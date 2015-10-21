@@ -1,8 +1,8 @@
 #pragma once
-#include "Build.h"
-using namespace std;
 
-class Build;
+class Position;
+
+using namespace std;
 
 class Column
 {
@@ -15,13 +15,13 @@ protected:
 public:
 	void read_availablein();
 
-	void column_positions();
+	void column_positions(std::shared_ptr<Position> p);
 
 	const int& getcol();
 
 	void readcolumn();
 
-	void delete_pointer_position();
+	void delete_pointer_position(std::shared_ptr<Position> p);
 
 	void remove(int a);
 

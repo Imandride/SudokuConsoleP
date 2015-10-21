@@ -9,10 +9,10 @@ const int& Block::getblock()
 
 void Block::readblock()
 {
-	printf("Block: %d\n    ", block);
+	printf("Block: %d\n\n", block);
 }
 
-void Block::block_positions(P_PR &p)
+void Block::block_positions(std::shared_ptr<Position> &p)
 {
 	positions_in_PS.insert(p);
 }
@@ -25,9 +25,9 @@ void Block::read_availablein()
 	}
 }
 
-void Block::delete_pointer_position(P_PR p)
+void Block::delete_pointer_position(std::shared_ptr<Position> p)
 {
-	printf("Deleting position %d from block: ", p->return_active_int());
+	printf("Deleting position %d from block: \n", p->return_active_int());
 	positions_in_PS.erase(p);
 }
 

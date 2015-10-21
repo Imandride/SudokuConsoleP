@@ -1,6 +1,7 @@
 #pragma once
-#include "Position.h"
+#include "stdafx.h"
 
+class Build;
 
 Position::Position(std::vector<int>& build_vector)
 {

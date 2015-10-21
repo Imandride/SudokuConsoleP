@@ -2,6 +2,7 @@
 //
 #include "stdafx.h"
 
+
 int active_key;
 
 int main()

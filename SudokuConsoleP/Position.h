@@ -7,9 +7,9 @@
 #include "Column.h"
 #include "Block.h"
 
+
 using namespace std;
 
-class Build;
 
 typedef shared_ptr<Row> R_P;
 typedef shared_ptr<Column> C_P;

@@ -13,6 +13,11 @@
 #include <iostream>
 #include <set>
 #include <map>
+#include "Build.h"
+#include "Position.h"
+
+
+//#include "Build.h"
 
 
 using namespace std;

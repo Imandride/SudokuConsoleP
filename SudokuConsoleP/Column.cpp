@@ -14,7 +14,7 @@ void Column::read_availablein()
 	}
 }
 
-void Column::column_positions(P_P p)
+void Column::column_positions(std::shared_ptr<Position> p)
 {
 	positions_in_PS.insert(p);
 }
@@ -29,9 +29,9 @@ void Column::readcolumn()
 	printf("Column: %d    ", column);
 }
 
-void Column::delete_pointer_position(P_P p)
+void Column::delete_pointer_position(std::shared_ptr<Position> p)
 {
-	printf("Deleting position %d from column: ", p->return_active_int());
+	printf("Deleting position %d from column: \n", p->return_active_int());
 	positions_in_PS.erase(p);
 }
 
