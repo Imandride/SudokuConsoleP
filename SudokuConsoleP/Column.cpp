@@ -1,14 +1,14 @@
 #include "stdafx.h"
 #include "Column.h"
 
-std::set<int>* Column::available_in_CIS()
+std::set<int>* Column::P_aval_int_val()
 {
-	return &available_in_IS;
+	return &aval_int_val;
 }
 
 void Column::read_availablein()
 {
-	for (auto p: available_in_IS)
+	for (auto p: aval_int_val)
 	{
 		printf("%d ", p);
 	}
@@ -37,12 +37,12 @@ void Column::delete_pointer_position(std::shared_ptr<Position> p)
 
 void Column::remove(int a)
 {
-	available_in_IS.erase(a);
+	aval_int_val.erase(a);
 	for (auto p : positions_in_PS)
 	{
 		printf("Removing from position: %d\n", p->return_active_int());
 		p->delete_available_pos(a);
-		this->read_availablein();
+		read_availablein();
 		printf("\n");
 	}
 }

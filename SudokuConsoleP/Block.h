@@ -1,10 +1,10 @@
 #pragma once
 
 
-
 class Position;
 
 using namespace std;
+
 class Block
 {
 protected:
@@ -14,7 +14,9 @@ protected:
 	Block() = delete;
 	std::set<int>* available_in_BIS();
 public:
-	
+	set<int>::iterator available_int_begin() { return available_in_IS.begin(); };
+	set<int>::iterator available_int_end() { return available_in_IS.end(); };
+
 	void read_availablein();
 	void delete_pointer_position(std::shared_ptr<Position> p);
 	const int& getblock();

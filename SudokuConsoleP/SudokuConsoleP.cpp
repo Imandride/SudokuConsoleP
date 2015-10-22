@@ -3,9 +3,10 @@
 #include "stdafx.h"
 
 
+
 int active_key;
 
-int main()
+int main(int argc, char* argv[])
 {
 	unique_ptr<Build> build(new Build());
 
@@ -15,6 +16,8 @@ int main()
 	build->buildVec(Sud);
 	build->set_rcb_pos();
 	build->check_initial_positions();
+	build->check_remaining_zero();
+	
 
 	//read_set_positions();
 	//read_VecI(Sud);
